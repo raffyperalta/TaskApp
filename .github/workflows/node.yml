@@ -39,9 +39,23 @@ jobs:
       run: npm run build --if-present
       working-directory: server
 
+    - name: Generate Prisma Client
+      run: npx prisma generate
+      working-directory: server
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+
+    - name: Migrate DB
+      run: npx prisma migrate deploy
+      working-directory: server
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+
+
     - name: Test
       run: npm test
       working-directory: server
       env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+        ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
         NODE_ENV: test
