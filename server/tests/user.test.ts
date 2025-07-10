@@ -4,19 +4,18 @@ import app from '../src/index';
 import prisma from '../src/config/prisma';
 
 describe("User Routes", () => {
+  
   afterAll(async () => {
     // Clean up: disconnect Prisma
     // await prisma.user.deleteMany();
     // await prisma.task.deleteMany();
     await prisma.$disconnect();
   });
-
-  afterEach(async () => {
-    // Wipe all rows in all tables you want to clean
+  beforeEach(async () => {
     await prisma.task.deleteMany();
     await prisma.user.deleteMany();
-    // Add more as needed
   });
+
   // beforeEach(async () => {
   //   // Wipe all rows in all tables you want to clean
   //   await prisma.task.deleteMany();
