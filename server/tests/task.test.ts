@@ -40,13 +40,11 @@ describe("Task Routes", () => {
 
   // 4. Fetch the new user ID
   const user = registerRes.body;
-  console.log('New user ID:', user?.id);
   expect(user).not.toBeNull();
 });
 
   it("should create task", async () => {
     const auth = 'Bearer ' + token;
-    
     const res = await request(app)
       .post("/api/tasks/create")
       .set('Authorization', auth)
