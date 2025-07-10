@@ -15,6 +15,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
       res.status(403).json({ error: "Invalid access token" });
       return
     }
+    console.log("Decoded JWT payload:", user); // ✅ Add this!
     (req as any).user = user;
     next();
   });

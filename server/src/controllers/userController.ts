@@ -67,8 +67,6 @@ export const modifyPassword = async (req: Request, res: Response) => {
       res.status(404).json({ error: "User not found" });
       return;
     }
-    console.log("Password:" + oldPassword)
-    console.log("User Password:"+user.password)
     const isOldPassword = await bcrypt.compare(oldPassword, user.password)
     if (!isOldPassword) {
       res.status(400).json({ error: "Old password is incorrect" });
@@ -103,7 +101,6 @@ export const login = async (req: Request, res: Response) => {
       res.status(401).json({ error: "Invalid password" });
     }else {
       const accessToken = process.env.ACCESS_TOKEN_SECRET;
-      console.log("Access Token: " + accessToken);
       if (!accessToken) {
         res.status(500).json({ error: "JWT secret is not defined" });
         return;
