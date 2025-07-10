@@ -1,8 +1,10 @@
 import { z } from 'zod';
 
 export const userValidator = z.object({
-  email: z.string().email(),
-  password: z.string().min(6, 'Password must be at least 6 characters long'),
+  body: z.object({
+    email: z.string().email(),
+    password: z.string().min(6, 'Password must be at least 6 characters long'),
+  }),
 });
 
 export const modifyPasswordValidator = z.object({
