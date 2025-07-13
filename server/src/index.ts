@@ -6,7 +6,8 @@ import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
-dotenv.config();
+import { resolve } from 'path';
+dotenv.config({ path: resolve(__dirname, '../../.env') });
 
 const app = express();
 app.use(express.json());
