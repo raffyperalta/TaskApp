@@ -33,10 +33,10 @@ app.get('/helloworld', (req: Request, res: Response) => {
 app.use('/api/tasks', taskRoutes);
 
 app.use('/api/account', userRoutes);
-const PORT = process.env.PORT;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
 
 if (require.main === module) {
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
 }
