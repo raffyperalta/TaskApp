@@ -7,7 +7,8 @@
     "test": "dotenv -e .env.test -- cross-env NODE_ENV=test jest --runInBand",
     "dev": "ts-node-dev src/index.ts",
     "open:test:db": "npx cross-env DATABASE_URL=postgresql://postgres:clockwerk@localhost:5432/taskmanager_test prisma studio",
-    "db:push:test": "npx cross-env DATABASE_URL=\"postgresql://postgres:clockwerk@localhost:5432/taskmanager_test?schema=public\" npx prisma db push"
+    "db:push:test": "npx cross-env DATABASE_URL=\"postgresql://postgres:clockwerk@localhost:5432/taskmanager_test?schema=public\" npx prisma db push",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
